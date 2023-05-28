@@ -6,23 +6,32 @@ import random
 mots_df = pd.read_csv('666_mots.csv')
 mots_liste = mots_df.iloc[:, 0].tolist()
 
-# Fonction pour mélanger les mots
 def melanger_mots():
+    """Mélange les mots dans la liste des mots."""
     random.shuffle(mots_liste)
 
-# Fonction pour sélectionner les mots et les indices
 def selectionner_mots_indices():
+    """Sélectionne les mots secrets et les indices pour chaque mot secret.
+    
+    Retourne:
+        tuple: Un tuple contenant une liste de mots secrets et une liste d'indices pour chaque mot secret.
+    """
     melanger_mots()
     mots_secrets = mots_liste[:7]
     indices = random.choices(range(2, 6), k=7) # Nombre d'indices pour chaque mot secret
     return mots_secrets, indices
 
-# Fonction pour jouer une manche
 def jouer_manche(mots_secrets, indices):
+    """Joue une manche du jeu avec les mots secrets et les indices donnés.
+    
+    Args:
+        mots_secrets (list): Liste des mots secrets pour la manche.
+        indices (list): Liste des indices pour chaque mot secret.
+    """
     pass
 
-# Fonction principale
 def main():
+    """Fonction principale pour exécuter le jeu."""
     st.title("Jeu des 666 mots ")
     mots_secrets, indices = selectionner_mots_indices()
 
@@ -43,8 +52,6 @@ def main():
 
     if st.button("Nouveaux indices"):
         mots_secrets, indices = selectionner_mots_indices()
-
-
 
 if __name__ == '__main__':
     main()
